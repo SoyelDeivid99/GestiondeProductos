@@ -1,17 +1,17 @@
 package gestiondeproductos;
 
 /**
- * Clase Producto: representa un artículo de la tienda.
- * Cada objeto tiene su propio nombre, precio y existencias.
+ * Clase base Producto: representa un artículo de la tienda.
+ * Sus atributos son protected para que las clases derivadas puedan usarlos.
  */
 public class Producto {
 
-    // Atributos privados (encapsulamiento)
-    private String nombre;
-    private double precio;
-    private int stock;
+    // protected: visibles para esta clase y para sus subclases
+    protected String nombre;
+    protected double precio;
+    protected int stock;
 
-    // Constructor: se ejecuta al crear el objeto con "new"
+    // Constructor de la clase base
     public Producto(String nombre, double precio, int stock) {
         this.nombre = nombre;
         this.precio = precio;

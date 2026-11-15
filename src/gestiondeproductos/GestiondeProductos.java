@@ -1,32 +1,36 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package gestiondeproductos;
 
 /**
- *
- * @author Marco Esparza Tiger
+ * Programa principal: crea objetos de la clase base y de las clases derivadas
+ * y prueba los métodos heredados, sobrescritos y exclusivos.
  */
 public class GestiondeProductos {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-                // Instanciación: se crean tres objetos a partir de la clase Producto
+        // Objeto de la clase base (Unidad 2)
         Producto leche = new Producto("Leche", 28.5, 10);
-        Producto pan = new Producto("Pan", 12.0, 25);
-        Producto huevo = new Producto("Huevo", 3.5, 60);
-
-        // Prueba de métodos
         leche.mostrarInfo();
         leche.vender(3);
-        leche.vender(20);      // provoca "stock insuficiente"
-        pan.reabastecer(10);
-        huevo.mostrarInfo();
 
-        System.out.println("Valor del inventario de pan: $" + pan.valorInventario());
+        // Objetos de las clases derivadas (Unidad 3)
+        ProductoPerecedero yogurt = new ProductoPerecedero("Yogurt", 18.0, 30, 2);
+        ProductoElectronico audifonos = new ProductoElectronico("Audifonos", 350.0, 8, 12);
+
+        System.out.println("\n== Perecedero ==");
+        yogurt.mostrarInfo();                    // versión sobrescrita
+        yogurt.vender(5);                        // método heredado
+        yogurt.aplicarDescuentoPorCaducidad();   // método exclusivo
+        yogurt.mostrarInfo();
+
+        System.out.println("\n== Electrónico ==");
+        audifonos.mostrarInfo();                 // versión sobrescrita
+        audifonos.reabastecer(4);                // método heredado
+        audifonos.extenderGarantia(6);           // método exclusivo
+        System.out.println("Valor del inventario: $" + audifonos.valorInventario());
+
+        // Polimorfismo: una variable de la clase base puede apuntar a una hija
+        System.out.println("\n== Polimorfismo ==");
+        Producto p = yogurt;
+        p.mostrarInfo();
     }
-    
 }
